@@ -10,9 +10,9 @@ import Register from './Component/Register';
 function App() {
   return (
     <div className="App">
-      {/* <Home/> */}
-      <Login/>
-      {/* <Register/> */}
+      {/* <Home/> 
+      <Login/> */}
+      <Register/>
    
     </div>
   );
