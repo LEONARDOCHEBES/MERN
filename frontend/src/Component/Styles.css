@@ -9,7 +9,9 @@
     border-radius: 5px;
 
 }
-
+.container-home{
+    text-align: center;
+}
 form{
     display: flex;
     flex-direction: column;
@@ -35,4 +37,11 @@ form input{
     min-width: 150px;
     margin: 0 auto;
     border-radius: 100px;
+
+    transition: backgroundColor 5s; /*NO SIRVE*/
+}
+
+.btn:hover{/*Al pasar mause ensima activa el css*/
+    background-color: darkgreen;
+    cursor: pointer;/*Hace que cursor se ponga forma manito*/
 }
