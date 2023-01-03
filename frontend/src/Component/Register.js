@@ -26,11 +26,11 @@ const Register = ()=>{
         )
     }
 
-    const handleSubmit = async()=>{
-
+    const handleSubmit = async(e)=>{
+        e.preventDefault();
         console.log(user)
         await axios.post("http://localhost:8080/register",user)
-        .then (res => console.log(res))
+        .then (res => alert(res.data.message))
     }
     
     return(
