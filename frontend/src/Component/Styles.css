@@ -35,7 +35,7 @@ form input{
     color: white;
     font-size: 18px;
     min-width: 150px;
-    margin: 0 auto;
+    margin: 5px;
     border-radius: 100px;
 
     transition: backgroundColor 5s; /*NO SIRVE*/
@@ -44,4 +44,9 @@ form input{
 .btn:hover{/*Al pasar mause ensima activa el css*/
     background-color: darkgreen;
     cursor: pointer;/*Hace que cursor se ponga forma manito*/
+}
+
+.btn-container{
+    margin: 10px auto;
+
 }
