@@ -29,8 +29,19 @@ const Register = ()=>{
     const handleSubmit = async(e)=>{
         e.preventDefault();
         console.log(user)
-        await axios.post("http://localhost:8080/register",user)
-        .then (res => alert(res.data.message))
+
+        const {firstName,lastName,email,password,repassword} = user
+            if (firstName && lastName && email && password){
+                if(password === repassword){
+                    await axios.post("http://localhost:8080/register",user)
+                    .then (res => alert(res.data.message))
+
+
+                }else{
+                    alert ("check ur password")
+                }
+            }
+
     }
     
     return(
@@ -54,7 +65,8 @@ const Register = ()=>{
             <label htmlFor='re-password'>Re-Password</label>
             <input type="password" id="re-password" name='repassword' value={user.repassword} onChange={handleChange}  />
 
-            <button className='btn' onClick = {handleSubmit} >Register</button>                
+            <button className='btn' onClick = {handleSubmit} >Register</button>
+            <button className='btn' onClick = {handleSubmit} >Login </button>                 
         </form>
 
     </div>

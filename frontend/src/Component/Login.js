@@ -1,4 +1,8 @@
-import React, { useState } from 'react'
+
+import React, { useContext, useState } from 'react'
+import axios from 'axios';
+
+import data from './ContextApi';
 
 export const Login = ()=>{
     
@@ -6,6 +10,8 @@ export const Login = ()=>{
         email: "",
         password: ""
     })
+
+    const {setUserData} = useContext(data)
 
     const handleChange = (e)=>{
         const {name, value} = e.target;
@@ -17,6 +23,15 @@ export const Login = ()=>{
         }
         )
     }
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        axios.post("http://localhost:8080/login", user)
+        .then((res) => {
+            alert (res.data.message)
+            setUserData(res.data.user)
+        })
+    }
+
     console.log(user)
     return(
         <div className='container'>
@@ -27,7 +42,10 @@ export const Login = ()=>{
                 <label htmlFor='password'>Password</label>
                 <input type="password" id="password" name='password' value={user.password} onChange={handleChange}  />
 
-                <button className='btn'>Login</button>                
+                <div className='btn-container'>
+                    <button className='btn' onClick = {handleSubmit} >Login</button>
+                    <button className='btn' onClick = {handleSubmit} >Register</button>               
+                </div>               
             </form>
 
         </div>

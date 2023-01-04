@@ -6,7 +6,6 @@ app.use(express.urlencoded({extended : false }))
 const cors = require("cors")
 app.use(cors())
 
-
 /*====================================
 database mongodb://localhost:27017
 ======================================*/
@@ -28,7 +27,6 @@ mongoose.connect(URI).then(
     console.log(err)
     console.log("PEPEEEEEEEEaaaaaaa")
 });
-
 
 /*+++++++++++++++++++++
 esquema
@@ -80,6 +78,27 @@ app.post("/register", (req, res)=>{
     })
 
 })
+
+app.post("/login",(req,res)=>{
+    console.log(req.body)
+    const {email, password} = req.body
+
+    UserModel.findOne ({email : email}, (err,user)=>{
+        if(user){
+            if(password == user.password){
+                res.send({message : "logeado"})
+            }else{
+                res.send({message : "password no pego"})
+            }
+        }else{
+            res.send({message : "this email not register"})
+        }
+    })
+
+})
+
+
+
 
 /*/////////////////////////////////////
 LISTEN
