@@ -86,7 +86,7 @@ app.post("/login",(req,res)=>{
     UserModel.findOne ({email : email}, (err,user)=>{
         if(user){
             if(password == user.password){
-                res.send({message : "logeado"})
+                res.send({message : "logeado", user})
             }else{
                 res.send({message : "password no pego"})
             }

@@ -1,8 +1,9 @@
 
 import React, { useContext, useState } from 'react'
 import axios from 'axios';
-
 import data from './ContextApi';
+import { useNavigate } from 'react-router-dom';
+
 
 export const Login = ()=>{
     
@@ -12,7 +13,7 @@ export const Login = ()=>{
     })
 
     const {setUserData} = useContext(data)
-
+    const navigate = useNavigate()
     const handleChange = (e)=>{
         const {name, value} = e.target;
         setUser((preve)=>{
@@ -29,10 +30,11 @@ export const Login = ()=>{
         .then((res) => {
             alert (res.data.message)
             setUserData(res.data.user)
+            navigate("/")
         })
     }
 
-    console.log(user)
+    //console.log(user)
     return(
         <div className='container'>
             <form>
@@ -44,7 +46,7 @@ export const Login = ()=>{
 
                 <div className='btn-container'>
                     <button className='btn' onClick = {handleSubmit} >Login</button>
-                    <button className='btn' onClick = {handleSubmit} >Register</button>               
+                    <button className='btn' onClick = {()=>navigate("/register")} >Register</button>               
                 </div>               
             </form>
 
